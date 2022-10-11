@@ -667,7 +667,7 @@ module fpga(
              );
 
 `ifndef CL_NAME
- `define CL_NAME cl_dram_dma
+ `define CL_NAME cl_nova
 `endif
 
    //Developer put top level here (replace cl_simple, with top level)
