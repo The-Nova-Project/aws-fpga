@@ -1,7 +1,6 @@
 # Table of Contents
 
 1. [Overview of AWS EC2 FPGA Development Kit](#overview-of-aws-ec2-fpga-development-kit)
-    - [Developer Support](#developer-support)
     - [Development Flow](#development-flow)
     - [Development environments](#development-environments)
     - [FPGA Developer AMI](#fpga-developer-ami)
@@ -15,6 +14,7 @@
     - [Quickstarts](#quickstarts)
     - [How To's](#how-tos)
 1. [Documentation Overview](#documentation-overview)
+1. [Developer Support](#developer-support)
 
 # Overview of AWS EC2 FPGA Development Kit
 
@@ -23,10 +23,6 @@ It is distributed between this github repository and FPGA Developer AMI - [Cento
 
 ⚠️ <b>NOTE:</b> The developer kit is supported for Linux operating systems only.
 
-## Developer Support
-
-Opening a [GitHub Issue](https://github.com/aws/aws-fpga/issues) is the preferred method to get support with the AWS FPGA Development Kit. In addition, the [FPGA Development re:Post Tag](https://repost.aws/tags/TAc7ofO5tbQRO57aX1lBYbjA/fpga-development) is available to find FPGA-related discussion topics from the AWS community of customers, AWS customer support, and the AWS FPGA development team.
-
 ## Development Flow
 After creating an FPGA design (also called CL - Custom logic), developers can create an Amazon FPGA Image (AFI) and easily deploy it to an F1 instance. AFIs are reusable, shareable and can be deployed in a scalable and secure way.
 
@@ -34,13 +30,12 @@ After creating an FPGA design (also called CL - Custom logic), developers can cr
 
 ## Development Environments
 
-| Development Environment | Description | Accelerator Language | Hardware Interface | Debug Options| Typical Developer                                                     |
-| --------|---------|-------|---------|-------|-----------------------------------------------------------------------|
-| Software Defined Accelerator Development using [Vitis](Vitis/README.md)/[SDAccel](SDAccel/README.md)| Development experience leverages an optimized compiler to allow easy new accelerator development or migration of existing C/C++/openCL, Verilog/VHDL to AWS FPGA instances | C/C++/OpenCL, Verilog/VHDL (RTL) | OpenCL APIs and XRT | SW/HW Emulation, Simulation, GDB, Virtual JTAG (Chipscope) | SW or HW Developer with zero FPGA experience                          |
-| [Hardware Accelerator Development using Vivado](hdk/README.md) | Fully custom hardware development experience provides hardware developers with the tools required for developing AFIs for AWS FPGA instances  | Verilog/VHDL | [XDMA Driver](sdk/linux_kernel_drivers/xdma/README.md), [peek/poke](sdk/userspace/README.md) | Simulation, Virtual JTAG | HW Developer with advanced FPGA experience                            |
-| [IP Integrator/High Level Design(HLx) using Vivado](hdk/docs/IPI_GUI_Vivado_Setup.md) | Graphical interface development experience for integrating IP and high level synthesis development | Verilog/VHDL/C | [XDMA Driver](sdk/linux_kernel_drivers/xdma/README.md), [peek/poke](sdk/userspace/README.md) | Simulation, Virtual JTAG | HW Developer with intermediate FPGA experience                        |
- | [On-premise development for Alveo U200 using Vitis targetted for migration to F1](Vitis/docs/Alveo_to_AWS_F1_Migration.md) | Vitis flow development using on-premise U200 platform targeted for migration to F1 |  C/C++/OpenCL, Verilog/VHDL (RTL) | OpenCL APIs and XRT | SW/HW Emulation, Simulation, GDB, JTAG (Chipscope) | SW or HW Developer with zero FPGA experience and on-premise U200 card |
- | [On-premise development for Alveo U200 using F1.A.1.4 shell](hdk/docs/U200_to_F1_migration_HDK.md) | HDK flow for on-premise U200 card using F1.A.1.4 shell targetted for migration to F1 | Verilog/VHDL | XDMA driver, peek/poke | Simulation, JTAG | HW Developer with advanced FPGA experience and on-premise U200 card   |
+| Development Environment | Description | Accelerator Language | Hardware Interface | Debug Options| Typical Developer |
+| --------|---------|-------|---------|-------|-------|
+| Software Defined Accelerator Development using [Vitis](Vitis/README.md)/[SDAccel](SDAccel/README.md)| Development experience leverages an optimized compiler to allow easy new accelerator development or migration of existing C/C++/openCL, Verilog/VHDL to AWS FPGA instances | C/C++/OpenCL, Verilog/VHDL (RTL) | OpenCL APIs and XRT | SW/HW Emulation, Simulation, GDB, Virtual JTAG (Chipscope) | SW or HW Developer with zero FPGA experience |
+| [Hardware Accelerator Development using Vivado](hdk/README.md) | Fully custom hardware development experience provides hardware developers with the tools required for developing AFIs for AWS FPGA instances  | Verilog/VHDL | [XDMA Driver](sdk/linux_kernel_drivers/xdma/README.md), [peek/poke](sdk/userspace/README.md) | Simulation, Virtual JTAG | HW Developer with advanced FPGA experience |
+| [IP Integrator/High Level Design(HLx) using Vivado](hdk/docs/IPI_GUI_Vivado_Setup.md) | Graphical interface development experience for integrating IP and high level synthesis development | Verilog/VHDL/C | [XDMA Driver](sdk/linux_kernel_drivers/xdma/README.md), [peek/poke](sdk/userspace/README.md) | Simulation, Virtual JTAG | HW Developer with intermediate FPGA experience |
+
 > For on-premise development, SDAccel/Vitis/Vivado must have the [correct license and use one of the supported tool versions](./docs/on_premise_licensing_help.md). 
 
 ## FPGA Developer AMI
@@ -81,7 +76,6 @@ For software-defined development please look at the runtime compatibility table 
 |-----------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2017.1 | 🚫 Deprecated on 09/01/2018 | Developer kit versions prior to v1.3.7 and Developer AMI prior to v1.4 (2017.1) [reached end-of-life](https://forums.aws.amazon.com/ann.jspa?annID=6068).                 |
 | 2017.4 | 🚫 Deprecated on 12/31/2021 | [Support for Xilinx 2017.4 toolsets was deprecated on 12/31/2021](https://forums.aws.amazon.com/ann.jspa?annID=8949). |
-| 2020.1 and below | Discontinued on 02/2022 | Removed the ability for customers to newly subscribe to 2020.1 and below AMI versions to remove exposure to [CVE-2021-44228](https://www.cve.org/CVERecord?id=CVE-2021-44228) as these versions of tools do not have patches from xilinx |
 
 ## Hardware Development Kit (HDK)
 
@@ -190,10 +184,10 @@ Before you create your own AWS FPGA design, we recommend that you go through one
 ℹ️ <b>INFO:</b> For more in-depth applications and examples of using High level synthesis, Vitis Libraries, App Notes and Workshops, please refer to our [Example List](./docs/examples/example_list.md)
 
 ### How Tos
-| How To                                                                                | Description                                                                            | 
-|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| [Migrate Alveo U200 designs to F1 - Vitis](./Vitis/docs/Alveo_to_AWS_F1_Migration.md) | This application note shows the ease of migrating an Alveo U200 design to F1.          | 
- | [Migrate Alveo U200 designs to F1 - HDK](./hdk/docs/U200_to_F1_migration_HDK.md)      | Path to migrate from U200 vivado design flow to F1 HDK flow using AWS provided shells. |                                                                 
+| How To | Description | 
+|----|----|
+| [Migrate Alveo U200 designs to F1](./Vitis/docs/Alveo_to_AWS_F1_Migration.md) | This application note shows the ease of migrating an Alveo U200 design to F1. | 
+
 # Documentation Overview
 
 Documentation is located throughout this developer kit and the table below consolidates a list of key documents to help developers find information:
@@ -222,3 +216,11 @@ Documentation is located throughout this developer kit and the table below conso
 | AFI - Power | [FPGA Power, recovering from clock gating](./hdk/docs/afi_power.md) | Helps developers with understanding FPGA power usage, preventing power violations on the F1 instance and recovering from a clock gated slot. |
 | On-premise Development | [Tools, Licenses required for on-premise development](./docs/on_premise_licensing_help.md) | Guidance for developer wanting to develop AFIs from on-premises instead of using the [FPGA Developer AMI](https://aws.amazon.com/marketplace/pp/B06VVYBLZZ) |
 | Frequently asked questions | [FAQ](./FAQs.md)| Q/A are added based on developer feedback and common AWS forum questions  |
+
+
+# Developer Support
+
+* [**AWS Re:Post**](https://repost.aws/) is the first place to go to post questions, learn from other users, to engage with the FPGA developer community, AWS and Xilinx engineers to get help.
+
+* You could also file a [Github Issue](https://github.com/aws/aws-fpga/issues) for support. We prefer AWS Re:Post as this helps the entire community learn from issues, feedback and answers.
+    * Click the "Watch" button in GitHub upper right corner to get regular updates.
